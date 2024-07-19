@@ -40,11 +40,11 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 186 100% 50%;
+    --primary: 336 86% 60%;
     --primary-foreground: 210 40% 98%;
     --secondary: 51 100% 50%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-    --terciary: 336 86% 60%;
+    --terciary: 186 100% 50%;
     --terciary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
@@ -56,8 +56,8 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
     --chart-1: 220 70% 50%;
-    --chart-2: 336 86% 60%;
-    --chart-3: 30 80% 55%;
+    --chart-2: 30 80% 55%;
+    --chart-3: 336 86% 60%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }

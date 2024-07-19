@@ -103,7 +103,7 @@ export function DashboardLayout({
                     <span className="sr-only">Close sidebar</span>
                     <XMarkIcon
                       aria-hidden="true"
-                      className="h-6 w-6 text-white"
+                      className="h-6 w-6 text-muted-foreground"
                     />
                   </button>
                 </div>
@@ -155,7 +155,7 @@ export function DashboardLayout({
                               className={classNames(
                                 team.current
                                   ? 'bg-accent text-primary'
-                                  : 'text-foreground hover:bg-accent hover:text-primary',
+                                  : 'text-foreground hover:bg-accent hover:text-muted-foreground',
                                 'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
                               )}
                             >
@@ -163,7 +163,7 @@ export function DashboardLayout({
                                 className={classNames(
                                   team.current
                                     ? 'border-primary text-primary'
-                                    : 'border-border text-foreground group-hover:border-primary group-hover:text-primary',
+                                    : 'border-border text-foreground group-hover:border-muted-foreground group-hover:text-muted-foreground',
                                   'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border bg-background text-[0.625rem] font-medium',
                                 )}
                               >
@@ -179,7 +179,7 @@ export function DashboardLayout({
                       <ModeToggle />
                       <a
                         href="#"
-                        className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-foreground hover:bg-accent hover:text-primary"
+                        className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 focus:bg-accent text-accent-foreground hover:bg-accent hover:text-muted-foreground"
                       >
                         <Cog6ToothIcon
                           aria-hidden="true"
@@ -213,7 +213,7 @@ export function DashboardLayout({
                           className={classNames(
                             item.href === pathname
                               ? 'focus:bg-accent bg-accent text-primary'
-                              : 'focus:bg-accent text-accent-foreground hover:bg-accent hover:text-terciary',
+                              : 'focus:bg-accent text-accent-foreground hover:bg-accent hover:text-muted-foreground',
                             'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
                           )}
                         >
@@ -222,7 +222,7 @@ export function DashboardLayout({
                             className={classNames(
                               item.href === pathname
                                 ? 'text-primary'
-                                : 'text-foreground group-hover:text-terciary',
+                                : 'text-foreground group-hover:text-muted-foreground',
                               'h-6 w-6 shrink-0',
                             )}
                           />
@@ -244,7 +244,7 @@ export function DashboardLayout({
                           className={classNames(
                             team.current
                               ? 'bg-accent text-primary'
-                              : 'text-foreground hover:bg-accent hover:text-primary',
+                              : 'text-foreground hover:bg-accent hover:text-muted-foreground',
                             'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
                           )}
                         >
@@ -252,7 +252,7 @@ export function DashboardLayout({
                             className={classNames(
                               team.current
                                 ? 'border-primary text-primary'
-                                : 'border-border text-foreground group-hover:border-primary group-hover:text-primary',
+                                : 'border-border text-foreground group-hover:border-muted-foreground group-hover:text-muted-foreground',
                               'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border bg-background text-[0.625rem] font-medium',
                             )}
                           >
