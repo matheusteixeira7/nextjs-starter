@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter as FontSans } from 'next/font/google'
 import { cn } from '@/lib/utils'
-import { DashboardLayout } from '@/components/dashboard-layout'
 import { ThemeProvider } from '@/components/theme-provider'
 import '../styles/globals.css'
 
@@ -34,7 +33,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <DashboardLayout>{children}</DashboardLayout>
+          {children}
         </ThemeProvider>
       </body>
     </html>

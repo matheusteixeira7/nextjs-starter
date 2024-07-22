@@ -30,24 +30,29 @@ import { ModeToggle } from './mode-toggle'
 import { WehandleLogo } from './ui/wehandle-logo'
 
 const navigation = [
-  { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
-  { name: 'Time', href: '/time', icon: UsersIcon, current: false },
-  { name: 'Projetos', href: '/projetos', icon: FolderIcon, current: false },
+  { name: 'Dashboard', href: '/dashboard', icon: HomeIcon, current: true },
+  { name: 'Time', href: '/dashboard/time', icon: UsersIcon, current: false },
+  {
+    name: 'Projetos',
+    href: '/dashboard/projetos',
+    icon: FolderIcon,
+    current: false,
+  },
   {
     name: 'Calendário',
-    href: '/calendario',
+    href: '/dashboard/calendario',
     icon: CalendarIcon,
     current: false,
   },
   {
     name: 'Documentos',
-    href: '/documentos',
+    href: '/dashboard/documentos',
     icon: DocumentDuplicateIcon,
     current: false,
   },
   {
     name: 'Relatórios',
-    href: '/relatorios',
+    href: '/dashboard/relatorios',
     icon: ChartPieIcon,
     current: false,
   },
