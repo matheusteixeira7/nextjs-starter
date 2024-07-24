@@ -83,9 +83,10 @@ export default function Home() {
               onSubmit={submit}
               type="submit"
               className="w-full"
+              disabled={loading}
               loading={loading}
             >
-              Entrar
+              {loading ? 'Carregando' : 'Entrar'}
             </Button>
           </form>
         </div>

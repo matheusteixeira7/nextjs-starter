@@ -10,13 +10,36 @@ const meta: Meta<typeof Button> = {
     layout: 'centered',
   },
   argTypes: {
-    variant: { control: 'select', description: 'Muda a variação do botão', options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'] },
-    size: { control: 'select', description: 'Muda o tamanho do botão', options: ['default','sm', 'lg', 'icon'] },
-    disabled: { control: 'boolean', description: 'Muda o estado do botão para desativado' },
-    onClick: { action: 'clicked', description: 'Função chamada quando o botão é clicado', },
-    loading: { control: 'boolean', description: 'Muda o estado do botão para carregando' },
-  }
-
+    variant: {
+      control: 'select',
+      description: 'Muda a variação do botão',
+      options: [
+        'default',
+        'destructive',
+        'outline',
+        'secondary',
+        'ghost',
+        'link',
+      ],
+    },
+    size: {
+      control: 'select',
+      description: 'Muda o tamanho do botão',
+      options: ['default', 'sm', 'lg', 'icon'],
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'Muda o estado do botão para desativado',
+    },
+    onClick: {
+      action: 'clicked',
+      description: 'Função chamada quando o botão é clicado',
+    },
+    loading: {
+      control: 'boolean',
+      description: 'Muda o estado do botão para carregando',
+    },
+  },
 }
 
 export default meta
