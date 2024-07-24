@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Button } from './button'
 import { action } from '@storybook/addon-actions'
+import { ChevronRight } from 'lucide-react'
 
 const meta: Meta<typeof Button> = {
   title: 'components/ui/button',
@@ -51,7 +52,51 @@ export const Default: Story = {
     size: 'default',
     disabled: false,
     onClick: action('default click'),
-    children: 'Default Button',
+    children: 'Button',
+    loading: false,
+  },
+}
+
+export const Destructive: Story = {
+  args: {
+    variant: 'destructive',
+    size: 'default',
+    disabled: false,
+    onClick: action('default click'),
+    children: 'Button',
+    loading: false,
+  },
+}
+
+export const Outline: Story = {
+  args: {
+    variant: 'outline',
+    size: 'default',
+    disabled: false,
+    onClick: action('default click'),
+    children: 'Button',
+    loading: false,
+  },
+}
+
+export const Link: Story = {
+  args: {
+    variant: 'link',
+    size: 'default',
+    disabled: false,
+    onClick: action('default click'),
+    children: 'Button',
+    loading: false,
+  },
+}
+
+export const Ghost: Story = {
+  args: {
+    variant: 'ghost',
+    size: 'default',
+    disabled: false,
+    onClick: action('default click'),
+    children: 'Button',
     loading: false,
   },
 }
@@ -62,7 +107,39 @@ export const Secondary: Story = {
     size: 'default',
     disabled: false,
     onClick: action('default click'),
-    children: 'Secondary Button',
+    children: 'Button',
+    loading: false,
+  },
+}
+
+export const Disabled: Story = {
+  args: {
+    variant: 'default',
+    size: 'default',
+    disabled: true,
+    children: 'Disabled',
+    loading: false,
+  },
+}
+
+export const Loading: Story = {
+  args: {
+    variant: 'default',
+    size: 'default',
+    disabled: false,
+    onClick: action('default click'),
+    children: 'Please wait',
+    loading: true,
+  },
+}
+
+export const Icon: Story = {
+  args: {
+    variant: 'outline',
+    size: 'icon',
+    disabled: false,
+    onClick: action('default click'),
+    children: <ChevronRight className="h-4 w-4" />,
     loading: false,
   },
 }

@@ -752,7 +752,7 @@ export default function Dashboard() {
         </Card>
         <Card className="w-full lg:max-w-xs" x-chunk="charts-01-chunk-7">
           <CardHeader className="space-y-0 pb-0">
-            <CardDescription>Time in Bed</CardDescription>
+            <CardDescription>Lorem Ipsum</CardDescription>
             <CardTitle className="flex items-baseline gap-1 text-4xl tabular-nums">
               8
               <span className="font-sans text-sm font-normal tracking-normal text-muted-foreground">
@@ -840,7 +840,7 @@ export default function Dashboard() {
                   content={<ChartTooltipContent hideLabel />}
                   formatter={(value) => (
                     <div className="flex min-w-[120px] items-center text-xs text-muted-foreground">
-                      Time in bed
+                      Lorem Ipsum
                       <div className="ml-auto flex items-baseline gap-0.5 font-mono font-medium tabular-nums text-foreground">
                         {value}
                         <span className="font-normal text-muted-foreground">

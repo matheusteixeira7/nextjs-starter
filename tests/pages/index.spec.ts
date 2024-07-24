@@ -34,16 +34,11 @@ test.describe('Home Page', () => {
     await expect(page).toHaveURL('/dashboard')
   })
 
-  // test('should disable the submit button when loading', async ({ page }) => {
-  //   await page.fill('input#email', 'valid@example.com')
-  //   await page.fill('input#password', 'validpassword')
-  //   await page.click('text=Entrar')
-  //   await expect(page.locator('text=Carregando')).toBeVisible()
-  //   await expect(page.locator('text=Entrar')).toBeDisabled()
-  // })
-
-  // test('should navigate to forgot password page', async ({ page }) => {
-  //   await page.click('text=Esqueceu sua senha?')
-  //   await expect(page).toHaveURL('/forgot-password')
-  // })
+  test('should disable the submit button when loading', async ({ page }) => {
+    await page.fill('input#email', 'valid@example.com')
+    await page.fill('input#password', 'validpassword')
+    await page.click('text=Entrar')
+    await expect(page.locator('text=Carregando')).toBeVisible()
+    await expect(page.locator('text=Entrar')).not.toBeVisible()
+  })
 })
