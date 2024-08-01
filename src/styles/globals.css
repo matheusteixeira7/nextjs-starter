@@ -70,6 +70,10 @@
     @apply h-full;
   }
   body {
-    @apply h-full bg-background text-foreground;
+    @apply h-full bg-background text-foreground transition-all duration-500 ease-in-out;
   }
+}
+
+.page-transition {
+  @apply opacity-0 bg-background translate-y-10 blur-md;
 }

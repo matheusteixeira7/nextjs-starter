@@ -11,6 +11,8 @@ import { ErrorMessage } from '@hookform/error-message'
 import { WehandleLogo } from '@/components/ui/wehandle-logo'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import { sleep } from '@/lib/utils'
+import { CuboLogo } from '@/components/ui/cubo-logo'
 
 export default function Home() {
   const {
@@ -29,8 +31,13 @@ export default function Home() {
 
   async function submit() {
     setLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 3000))
+    await sleep(2000)
+    const body = document.querySelector('body')
+    body?.classList.add('page-transition')
+    await sleep(500)
     router.push('/dashboard')
+    await sleep(500)
+    body?.classList.remove('page-transition')
   }
 
   return (
@@ -39,7 +46,7 @@ export default function Home() {
         <div className="mx-auto grid w-[350px] gap-6">
           <div className="grid gap-2 text-center">
             <WehandleLogo height={62} className="mb-4" />
-            <p className="text-left text-muted-foreground">
+            <p className="text-left text-foreground">
               Insira teus dados abaixo para acessar a plataforma
             </p>
           </div>
@@ -92,8 +99,8 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="hidden bg-muted lg:block bg-gradient-to-br from-primary to-secondary">
-        ads
+      <div className="hidden bg-muted lg:flex justify-center items-center bg-gradient-to-r from-background to-muted-background">
+        <CuboLogo height={512} />
       </div>
     </div>
   )

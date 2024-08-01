@@ -1,17 +1,17 @@
 import { cn } from '@/lib/utils'
 import { SVGProps } from 'react'
 
-type WehandleLogoProps = SVGProps<SVGSVGElement> & {
+type CuboLogoProps = SVGProps<SVGSVGElement> & {
   className?: string
 }
 
-export function WehandleLogo({ className, ...props }: WehandleLogoProps) {
+export function CuboLogo({ className, ...props }: CuboLogoProps) {
   return (
     <div className={cn('text-2xl', className)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         data-name="Camada 2"
-        viewBox="0 0 810.44 251.72"
+        viewBox="0 0 220.4 251.72"
         {...props}
       >
         <g data-name="Camada 1">
@@ -36,30 +36,6 @@ export function WehandleLogo({ className, ...props }: WehandleLogoProps) {
               fill: '#fdd500',
             }}
           />
-          <text
-            style={{
-              fontFamily: 'Verdana,Verdana',
-              fontSize: '113.06px',
-            }}
-            className="fill-foreground"
-            transform="translate(231.44 174.04)"
-          >
-            <tspan x={0} y={0}>
-              {'wehandle'}
-            </tspan>
-          </text>
-          <text
-            style={{
-              fontSize: '44.41px',
-              fontFamily: 'Verdana,Verdana',
-            }}
-            className="fill-foreground"
-            transform="translate(766.02 124.72)"
-          >
-            <tspan x={0} y={0}>
-              {'\xAE'}
-            </tspan>
-          </text>
         </g>
       </svg>
     </div>

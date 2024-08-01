@@ -20,6 +20,9 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        'login-pattern': "url('/peakpx.webp')",
+      },
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
       },
