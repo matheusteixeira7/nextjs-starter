@@ -33,20 +33,8 @@ import {
   ChartTooltipContent,
 } from '@/components/ui/chart'
 import { Separator } from '@/components/ui/separator'
-import { useEffect } from 'react'
-import { sleep } from '@/lib/utils'
 
 export default function Dashboard() {
-  useEffect(() => {
-    async function removeTransitionAnimation() {
-      const body = document.querySelector('body')
-      await sleep(500)
-      body?.classList.remove('transition-all', 'duration-500', 'ease-in-out')
-    }
-
-    removeTransitionAnimation()
-  }, [])
-
   return (
     <div className="chart-wrapper mx-auto flex max-w-6xl flex-col flex-wrap items-start justify-center gap-6 sm:flex-row">
       <div className="grid w-full gap-6 sm:grid-cols-2 lg:max-w-[22rem] lg:grid-cols-1 xl:max-w-[25rem]">

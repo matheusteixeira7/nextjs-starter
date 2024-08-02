@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   Dialog,
   DialogBackdrop,
@@ -12,11 +12,13 @@ import {
   TransitionChild,
 } from '@headlessui/react'
 import {
+  AcademicCapIcon,
   Bars3Icon,
   BellIcon,
   CalendarIcon,
   ChartPieIcon,
   Cog6ToothIcon,
+  CubeIcon,
   DocumentDuplicateIcon,
   FolderIcon,
   HomeIcon,
@@ -24,45 +26,71 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { DoorClosedIcon, ClipboardCheckIcon } from 'lucide-react'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { ModeToggle } from './mode-toggle'
 import { WehandleLogo } from './ui/wehandle-logo'
+import { sleep } from '@/lib/utils'
 
 const navigation = [
-  { name: 'Dashboard', href: '/dashboard', icon: HomeIcon, current: true },
-  { name: 'Time', href: '/dashboard/time', icon: UsersIcon, current: false },
   {
-    name: 'Projetos',
-    href: '/dashboard/projetos',
+    name: 'BI - Dashboard',
+    href: '/dashboard',
+    icon: ChartPieIcon,
+  },
+  {
+    name: 'Prestadores de serviços',
+    href: '/dashboard/prestadores-de-servicos',
+    icon: HomeIcon,
+  },
+  {
+    name: 'Meus serviços',
+    href: '/dashboard/meus-servicos',
     icon: FolderIcon,
-    current: false,
+  },
+  {
+    name: 'Homologação',
+    href: '/dashboard/homologacao',
+    icon: DocumentDuplicateIcon,
+  },
+  {
+    name: 'Minha empresa',
+    href: '/dashboard/minha-empresa',
+    icon: CubeIcon,
+  },
+  {
+    name: 'Controle de isenções',
+    href: '/dashboard/controle-de-isencoes',
+    icon: ChartPieIcon,
+  },
+  {
+    name: 'EAD',
+    href: '/dashboard/ead',
+    icon: AcademicCapIcon,
   },
   {
     name: 'Calendário',
     href: '/dashboard/calendario',
     icon: CalendarIcon,
-    current: false,
   },
   {
-    name: 'Documentos',
-    href: '/dashboard/documentos',
-    icon: DocumentDuplicateIcon,
-    current: false,
+    name: 'Acessos',
+    href: '/dashboard/acessos',
+    icon: UsersIcon,
   },
   {
-    name: 'Relatórios',
-    href: '/dashboard/relatorios',
-    icon: ChartPieIcon,
-    current: false,
+    name: 'Portaria',
+    href: '/dashboard/portaria',
+    icon: DoorClosedIcon,
+  },
+  {
+    name: 'Validações',
+    href: '/dashboard/validacoes',
+    icon: ClipboardCheckIcon,
   },
 ]
 
-const teams = [
-  { id: 1, name: 'Globo', href: '#', initial: 'G', current: false },
-  { id: 2, name: 'Unilever', href: '#', initial: 'U', current: false },
-  { id: 3, name: 'SBT', href: '#', initial: 'S', current: false },
-]
 const userNavigation = [
   { name: 'Seu perfil', href: '#' },
   { name: 'Sair', href: '#' },
@@ -77,6 +105,16 @@ export function DashboardLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  useEffect(() => {
+    async function removeTransitionAnimation() {
+      const body = document.querySelector('body')
+      await sleep(500)
+      body?.classList.remove('transition-all', 'duration-500', 'ease-in-out')
+    }
+
+    removeTransitionAnimation()
+  }, [])
+
   const pathname = usePathname()
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
@@ -148,38 +186,6 @@ export function DashboardLayout({
                         ))}
                       </ul>
                     </li>
-                    <li>
-                      <div className="text-xs font-semibold leading-6 text-gray-400">
-                        Empresas
-                      </div>
-                      <ul role="list" className="-mx-2 mt-2 space-y-1">
-                        {teams.map((team) => (
-                          <li key={team.name}>
-                            <a
-                              href={team.href}
-                              className={classNames(
-                                team.current
-                                  ? 'bg-accent text-primary'
-                                  : 'text-foreground hover:bg-accent hover:text-muted-foreground',
-                                'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
-                              )}
-                            >
-                              <span
-                                className={classNames(
-                                  team.current
-                                    ? 'border-primary text-primary'
-                                    : 'border-border text-foreground group-hover:border-muted-foreground group-hover:text-muted-foreground',
-                                  'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border bg-background text-[0.625rem] font-medium',
-                                )}
-                              >
-                                {team.initial}
-                              </span>
-                              <span className="truncate">{team.name}</span>
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </li>
                     <li className="mt-auto">
                       <ModeToggle />
                       <a
@@ -232,38 +238,6 @@ export function DashboardLayout({
                             )}
                           />
                           {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-                <li>
-                  <div className="text-xs font-semibold leading-6 text-foreground">
-                    Empresas
-                  </div>
-                  <ul role="list" className="-mx-2 mt-2 space-y-1">
-                    {teams.map((team) => (
-                      <li key={team.name}>
-                        <a
-                          href={team.href}
-                          className={classNames(
-                            team.current
-                              ? 'bg-accent text-primary'
-                              : 'text-foreground hover:bg-accent hover:text-muted-foreground',
-                            'group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6',
-                          )}
-                        >
-                          <span
-                            className={classNames(
-                              team.current
-                                ? 'border-primary text-primary'
-                                : 'border-border text-foreground group-hover:border-muted-foreground group-hover:text-muted-foreground',
-                              'flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border bg-background text-[0.625rem] font-medium',
-                            )}
-                          >
-                            {team.initial}
-                          </span>
-                          <span className="truncate">{team.name}</span>
                         </a>
                       </li>
                     ))}
