@@ -22,6 +22,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -31,6 +32,7 @@ import {
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Toggle } from '@/components/ui/toggle'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -48,6 +50,7 @@ export function DataTable<TData, TValue>({
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({})
   const [rowSelection, setRowSelection] = React.useState({})
+  const [filterVisibility, setFilterVisibility] = React.useState(false)
 
   const table = useReactTable({
     data,
@@ -70,14 +73,49 @@ export function DataTable<TData, TValue>({
 
   return (
     <div>
-      <div className="flex gap-4 justify-end mb-4 w-full">
-        <Button>Novo prestador</Button>
-        <Button>Novo cliente</Button>
-        <Button>Prestador sem serviço</Button>
+      <div className="flex flex-col-reverse lg:flex lg:flex-row items-center pb-4 gap-4">
+        <div className="flex gap-4 w-full justify-start">
+          <Toggle
+            onClick={() => setFilterVisibility(!filterVisibility)}
+            aria-label="Toggle filtros"
+          >
+            Filtros
+          </Toggle>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">Colunas</Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {table
+                .getAllColumns()
+                .filter((column) => column.getCanHide())
+                .map((column) => {
+                  return (
+                    <DropdownMenuCheckboxItem
+                      key={column.id}
+                      className="capitalize"
+                      checked={column.getIsVisible()}
+                      onCheckedChange={(value) =>
+                        column.toggleVisibility(!!value)
+                      }
+                    >
+                      {column.id}
+                    </DropdownMenuCheckboxItem>
+                  )
+                })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+        <div className="flex flex-col lg:flex-row gap-4 justify-end w-full">
+          <Button>Novo prestador</Button>
+          <Button>Novo cliente</Button>
+          <Button>Prestador sem serviço</Button>
+        </div>
       </div>
-      <div className="lg:flex items-center pb-4 gap-4">
-        {/* Filtros desktop */}
-        <div className="hidden lg:flex items-center gap-4">
+
+      {filterVisibility && (
+        <div className="lg:flex items-center gap-4 mb-4">
           <Input
             placeholder="Filtrar por empresa"
             value={
@@ -127,34 +165,8 @@ export function DataTable<TData, TValue>({
             className="max-w-sm mb-4 lg:mb-0"
           />
         </div>
+      )}
 
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
-              Colunas
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            {table
-              .getAllColumns()
-              .filter((column) => column.getCanHide())
-              .map((column) => {
-                return (
-                  <DropdownMenuCheckboxItem
-                    key={column.id}
-                    className="capitalize"
-                    checked={column.getIsVisible()}
-                    onCheckedChange={(value) =>
-                      column.toggleVisibility(!!value)
-                    }
-                  >
-                    {column.id}
-                  </DropdownMenuCheckboxItem>
-                )
-              })}
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </div>
       <div className="rounded-md border">
         <Table>
           <TableHeader>
