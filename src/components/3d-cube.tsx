@@ -1,16 +1,17 @@
 'use client'
 
 import React, { useRef } from 'react'
-import { Canvas } from '@react-three/fiber'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { useSpring, useScroll, useTransform, MotionValue } from 'framer-motion'
 import { motion } from 'framer-motion-3d'
+import { Mesh } from 'three'
 
 export function AnimatedCube() {
   const container = useRef(null)
   const { scrollYProgress } = useScroll({
     target: container,
-    offset: ['start start', 'end end'],
+    offset: ['start center', 'end center'],
   })
   const progress = useTransform(scrollYProgress, [0, 1], [0, 5])
   const smoothProgress = useSpring(progress, { damping: 20 })
@@ -20,8 +21,8 @@ export function AnimatedCube() {
       <div className="sticky top-0 h-screen">
         <Canvas>
           <OrbitControls enableZoom={false} enablePan={false} />
-          <ambientLight intensity={2} />
-          <directionalLight position={[2, 1, 1]} />
+          <ambientLight intensity={3} />
+          <directionalLight position={[1, 1, 1]} />
           <Cube progress={smoothProgress} />
         </Canvas>
       </div>
@@ -34,17 +35,29 @@ type CubeProps = {
 }
 
 function Cube({ progress }: CubeProps) {
-  const mesh = useRef(null)
+  const mesh = useRef<Mesh>(null)
+
+  useFrame(() => {
+    if (mesh.current) {
+      mesh.current.rotation.y += 0.001
+      mesh.current.rotation.x += 0.001
+    }
+  })
 
   return (
+    // @ts-expect-error - unknown properties
     <motion.mesh ref={mesh} rotation-y={progress} rotation-x={progress}>
-      <boxGeometry args={[2.5, 2.5, 2.5]} />
-      <meshStandardMaterial color="red" attach="material-0" />
-      <meshStandardMaterial color="green" attach="material-1" />
-      <meshStandardMaterial color="blue" attach="material-2" />
-      <meshStandardMaterial color="yellow" attach="material-3" />
-      <meshStandardMaterial color="purple" attach="material-4" />
-      <meshStandardMaterial color="orange" attach="material-5" />
+      <boxGeometry args={[2, 2, 2]} />
+      <meshStandardMaterial color="#00e5ff" attach="material-0" />
+      <meshStandardMaterial color="#00e5ff" attach="material-1" />
+      <meshStandardMaterial color="#f14187" attach="material-2" />
+      <meshStandardMaterial color="#f14187" attach="material-3" />
+      <meshStandardMaterial color="#ffd900" attach="material-4" />
+      <meshStandardMaterial color="#ffd900" attach="material-5" />
     </motion.mesh>
   )
 }
+
+// 00e5ff azul
+// ffd900 amarelo
+// f14187 rosa
