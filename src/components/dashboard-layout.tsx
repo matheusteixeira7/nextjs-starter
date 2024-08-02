@@ -109,7 +109,7 @@ export function DashboardLayout({
     async function removeTransitionAnimation() {
       const body = document.querySelector('body')
       await sleep(500)
-      body?.classList.remove('transition-all', 'duration-500', 'ease-in-out')
+      body?.classList.add('transition-none', 'duration-0')
     }
 
     removeTransitionAnimation()

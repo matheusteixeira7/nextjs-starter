@@ -1,5 +1,5 @@
-import { Prestadores, columns } from './columns'
-import { DataTable } from './data-table'
+import { Prestadores, columns } from './ui/columns'
+import { DataTable } from './ui/data-table'
 import { mockDataTable } from './mock'
 
 async function getData(): Promise<Prestadores[]> {

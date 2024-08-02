@@ -15,6 +15,16 @@ import {
 } from '@tanstack/react-table'
 
 import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog'
+
+import {
   Table,
   TableBody,
   TableCell,
@@ -33,6 +43,15 @@ import {
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Toggle } from '@/components/ui/toggle'
+import { Label } from '@/components/ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
@@ -108,9 +127,131 @@ export function DataTable<TData, TValue>({
           </DropdownMenu>
         </div>
         <div className="flex flex-col lg:flex-row gap-4 justify-end w-full">
-          <Button>Novo prestador</Button>
-          <Button>Novo cliente</Button>
-          <Button>Prestador sem serviço</Button>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline">Novo prestador</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Adicionar prestador</DialogTitle>
+                <DialogDescription>
+                  Selecione a nacionalidade e informe o CNPJ.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="grid gap-4 py-4">
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="name" className="text-right">
+                    País
+                  </Label>
+                  <Select>
+                    <SelectTrigger className="w-[180px]">
+                      <SelectValue placeholder="Selecione um país" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectGroup>
+                        <SelectItem value="Brasil">Brasil</SelectItem>
+                        <SelectItem value="Argentina">Argentina</SelectItem>
+                        <SelectItem value="Mexico">Mexico</SelectItem>
+                        <SelectItem value="Uruguai">Uruguai</SelectItem>
+                        <SelectItem value="Venezuela">Venezuela</SelectItem>
+                      </SelectGroup>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="username" className="text-right">
+                    CNPJ
+                  </Label>
+                  <Input
+                    id="username"
+                    placeholder="00.000.000/0001-00"
+                    className="col-span-3"
+                  />
+                </div>
+              </div>
+              <DialogFooter>
+                <Button type="submit">Continuar</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline">Novo cliente</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Adicionar cliente</DialogTitle>
+                <DialogDescription>
+                  Informe o email e telefone do cliente.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="grid gap-4 py-4">
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="name" className="text-right">
+                    Email
+                  </Label>
+                  <Input
+                    id="email"
+                    placeholder="m@email.com"
+                    className="col-span-3"
+                  />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="username" className="text-right">
+                    Telefone
+                  </Label>
+                  <Input
+                    id="username"
+                    placeholder="+55 11 99999-9999"
+                    className="col-span-3"
+                  />
+                </div>
+              </div>
+              <DialogFooter>
+                <Button type="submit">Continuar</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline">Prestador sem serviço</Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+              <DialogHeader>
+                <DialogTitle>Adicionar prestador</DialogTitle>
+                <DialogDescription>
+                  Informe o email e o telefone do prestador.
+                </DialogDescription>
+              </DialogHeader>
+              <div className="grid gap-4 py-4">
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="name" className="text-right">
+                    País
+                  </Label>
+                  <Input
+                    id="email_prestador"
+                    placeholder="p@email.com"
+                    className="col-span-3"
+                  />
+                </div>
+                <div className="grid grid-cols-4 items-center gap-4">
+                  <Label htmlFor="username" className="text-right">
+                    Telefone
+                  </Label>
+                  <Input
+                    id="username"
+                    placeholder="+55 11 99999-9999"
+                    className="col-span-3"
+                  />
+                </div>
+              </div>
+              <DialogFooter>
+                <Button type="submit">Continuar</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
         </div>
       </div>
 

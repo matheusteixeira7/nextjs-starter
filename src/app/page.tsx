@@ -33,6 +33,7 @@ export default function Home() {
     setLoading(true)
     await sleep(2000)
     const body = document.querySelector('body')
+    body?.classList.add('transition-all', 'duration-500', 'ease-in-out')
     body?.classList.add('page-transition')
     await sleep(500)
     router.push('/dashboard')
