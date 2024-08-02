@@ -12,7 +12,7 @@ import { WehandleLogo } from '@/components/ui/wehandle-logo'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { sleep } from '@/lib/utils'
-import { CuboLogo } from '@/components/ui/cubo-logo'
+import { AnimatedCube } from '@/components/3d-cube'
 
 export default function Home() {
   const {
@@ -100,7 +100,8 @@ export default function Home() {
       </div>
 
       <div className="hidden bg-muted lg:flex justify-center items-center bg-gradient-to-r from-background to-muted-background">
-        <CuboLogo height={512} />
+        {/* <CuboLogo height={512} /> */}
+        <AnimatedCube />
       </div>
     </div>
   )
