@@ -351,7 +351,7 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  Sem resultados.
                 </TableCell>
               </TableRow>
             )}
@@ -363,8 +363,8 @@ export function DataTable<TData, TValue>({
           {table.getFilteredSelectedRowModel().rows.length} de{' '}
           {table.getFilteredRowModel().rows.length}{' '}
           {table.getFilteredRowModel().rows.length > 1
-            ? 'colunas selecionados.'
-            : 'coluna selecionado.'}
+            ? 'colunas selecionadas.'
+            : 'coluna selecionada.'}
         </div>
         <Button
           variant="outline"

@@ -36,57 +36,57 @@ import { sleep } from '@/lib/utils'
 const navigation = [
   {
     name: 'BI - Dashboard',
-    href: '/dashboard',
+    href: '/bi-dashboard',
     icon: ChartPieIcon,
   },
   {
     name: 'Prestadores de serviços',
-    href: '/dashboard/prestadores-de-servicos',
+    href: '/prestadores-de-servicos',
     icon: HomeIcon,
   },
   {
     name: 'Meus serviços',
-    href: '/dashboard/meus-servicos',
+    href: '/meus-servicos',
     icon: FolderIcon,
   },
   {
     name: 'Homologação',
-    href: '/dashboard/homologacao',
+    href: '/homologacao',
     icon: DocumentDuplicateIcon,
   },
   {
     name: 'Minha empresa',
-    href: '/dashboard/minha-empresa',
+    href: '/minha-empresa',
     icon: CubeIcon,
   },
   {
     name: 'Controle de isenções',
-    href: '/dashboard/controle-de-isencoes',
+    href: '/controle-de-isencoes',
     icon: ChartPieIcon,
   },
   {
     name: 'EAD',
-    href: '/dashboard/ead',
+    href: '/ead',
     icon: AcademicCapIcon,
   },
   {
     name: 'Calendário',
-    href: '/dashboard/calendario',
+    href: '/calendario',
     icon: CalendarIcon,
   },
   {
     name: 'Acessos',
-    href: '/dashboard/acessos',
+    href: '/acessos',
     icon: UsersIcon,
   },
   {
     name: 'Portaria',
-    href: '/dashboard/portaria',
+    href: '/portaria',
     icon: DoorClosedIcon,
   },
   {
     name: 'Validações',
-    href: '/dashboard/validacoes',
+    href: '/app/validacoes',
     icon: ClipboardCheckIcon,
   },
 ]
