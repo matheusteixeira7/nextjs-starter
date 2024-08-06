@@ -1,6 +1,6 @@
 import { WehandleLogo } from '@/components/ui/wehandle-logo'
 import { AnimatedCube } from '@/components/3d-cube'
-import { LoginForm } from './ui/login-form'
+import { LoginForm } from './form'
 
 export default function Home() {
   return (

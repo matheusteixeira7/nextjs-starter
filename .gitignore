@@ -46,3 +46,4 @@ storybook-static
 /blob-report/
 /playwright/.cache/
 /storybook-static/
+data

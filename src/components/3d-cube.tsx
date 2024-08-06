@@ -45,7 +45,7 @@ function Cube({ progress }: CubeProps) {
   })
 
   return (
-    // @ts-expect-error - unknown properties
+    // @ts-expect-error motion mesh
     <motion.mesh ref={mesh} rotation-y={progress} rotation-x={progress}>
       <boxGeometry args={[2, 2, 2]} />
       <meshStandardMaterial color="#00e5ff" attach="material-0" />

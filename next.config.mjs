@@ -4,7 +4,10 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
-        hostname: 'images.unsplash.com',
+        protocol: 'https',
+        hostname: 'media.licdn.com',
+        port: '',
+        pathname: '/dms/image/**',
       },
     ],
   },
