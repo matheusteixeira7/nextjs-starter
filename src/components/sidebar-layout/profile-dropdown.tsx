@@ -1,11 +1,9 @@
+'use client'
+
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { ChevronDownIcon } from 'lucide-react'
 import Image from 'next/image'
-
-const userNavigation = [
-  { name: 'Seu perfil', href: '#' },
-  { name: 'Sair', href: '#' },
-]
+import { logout } from '@/app/auth/auth'
 
 export function ProfileDropdown() {
   return (
@@ -37,16 +35,22 @@ export function ProfileDropdown() {
           transition
           className="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-background py-2 shadow-lg ring-1 ring-gray-900/5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-100 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
         >
-          {userNavigation.map((item) => (
-            <MenuItem key={item.name}>
-              <a
-                href={item.href}
-                className="block px-3 py-1 text-sm leading-6 text-foreground data-[focus]:bg-accent"
-              >
-                {item.name}
-              </a>
-            </MenuItem>
-          ))}
+          <MenuItem>
+            <button className="px-3 py-1 text-sm leading-6 text-foreground data-[focus]:bg-accent">
+              Seu perfil
+            </button>
+          </MenuItem>
+
+          <MenuItem>
+            <button
+              onClick={async () => {
+                await logout()
+              }}
+              className="px-3 py-1 text-sm leading-6 text-foreground data-[focus]:bg-accent"
+            >
+              Sair
+            </button>
+          </MenuItem>
         </MenuItems>
       </Menu>
     </>
