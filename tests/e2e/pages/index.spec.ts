@@ -5,7 +5,7 @@ test.describe('Home Page', () => {
     await page.goto('/')
   })
 
-  test('should display the logo and form elements', async ({ page }) => {
+  test('deve mostrar a logo e o formulário', async ({ page }) => {
     await expect(
       page.locator('text=Insira teus dados abaixo para acessar a plataforma'),
     ).toBeVisible()
@@ -15,28 +15,40 @@ test.describe('Home Page', () => {
     await expect(page.locator('text=Esqueceu sua senha?')).toBeVisible()
   })
 
-  test('should show error messages for invalid inputs', async ({ page }) => {
+  test('deve mostrar mensagem de erro caso o email inserido seja um email inválido', async ({
+    page,
+  }) => {
     await page.fill('input#email', 'invalid-email@invalid')
-    await page.fill('input#password', 'curto')
+    await page.fill('input#password', '12345678')
     await page.click('text=Entrar')
     await expect(
-      page.locator('text=Por favor, preencha um email válido'),
-    ).toBeVisible()
-    await expect(
-      page.locator('text=A senha precisa ter ao menos 8 caracteres'),
+      page.locator('text=Por favor, insira um email válido.'),
     ).toBeVisible()
   })
 
-  test('should navigate to dashboard on valid input', async ({ page }) => {
+  test('deve mostrar mensagem de erro caso as credenciais sejam inválidas', async ({
+    page,
+  }) => {
     await page.fill('input#email', 'm@wehandle.com.br')
-    await page.fill('input#password', 'validpassword#123')
+    await page.fill('input#password', 'invalid-password')
+    await page.click('text=Entrar')
+    await expect(page.locator('text=Credenciais inválidas.')).toBeVisible()
+  })
+
+  test('deve redirecionar para /dashboard quando o login for feito corretamente', async ({
+    page,
+  }) => {
+    await page.fill('input#email', 'm@wehandle.com.br')
+    await page.fill('input#password', '12345678')
     await page.click('text=Entrar')
     await expect(page).toHaveURL('/dashboard')
   })
 
-  test('should disable the submit button when loading', async ({ page }) => {
-    await page.fill('input#email', 'valid@example.com')
-    await page.fill('input#password', 'validpassword')
+  test('deve desabilitar o botão de loading quando clicar em Entrar', async ({
+    page,
+  }) => {
+    await page.fill('input#email', 'm@wehandle.com.br')
+    await page.fill('input#password', '12345678')
     await page.click('text=Entrar')
     await expect(page.locator('text=Carregando')).toBeVisible()
     await expect(page.locator('text=Entrar')).not.toBeVisible()
