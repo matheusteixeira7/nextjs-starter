@@ -9,6 +9,12 @@ const nextConfig = {
         port: '',
         pathname: '/dms/image/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'tailwindui.com',
+        port: '',
+        pathname: '/img/**',
+      },
     ],
   },
 }
